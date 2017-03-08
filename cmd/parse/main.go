@@ -35,7 +35,7 @@ func fetchRawMessages(dir string, result chan string) {
 }
 
 func main() {
-	renderedDir := "out/rendered2"
+	renderedDir := "out/rendered"
 
 	rawFiles := make(chan string)
 	articleList := []Article{}
@@ -62,7 +62,7 @@ func main() {
 
 	articleStrings := []string{}
 	for nr, article := range articleList {
-		articleStrings = append(articleStrings, article.Markdown())
+		articleStrings = append([]string{article.Markdown()}, articleStrings...)
 		log.Println(nr, article)
 	}
 
